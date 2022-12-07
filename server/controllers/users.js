@@ -4,7 +4,7 @@ import User from "../models/User.js";
 /* Routes: / */
 export const welcome = (req, res) => {
     try {
-        res.status(200).json({ msg: "welcome mvc" });
+        res.status(200).json({ msg: "welcome to wanda" });
     } catch (err) {
         res.status(500).json({ msg: `Error: ${err}` });
     }
