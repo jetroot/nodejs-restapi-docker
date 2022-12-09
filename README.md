@@ -28,7 +28,7 @@ cd docker
 docker compose up
 ```
 
-##### 5. Application is running on `localhost`
+##### 5. Application is running on `localhost`, You can try:
 
 ```bash
 http://127.0.0.1:3001/
