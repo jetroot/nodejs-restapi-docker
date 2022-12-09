@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 
+//  Verify JWT Token
 export const verifyToken = async (req, res, next) => {
     try {
         let token = req.header("Authorization");
@@ -19,6 +20,7 @@ export const verifyToken = async (req, res, next) => {
     }
 };
 
+// Generate JWT Token
 export const generateToken = (userId, jwtSecretKey) => {
     try {
         let token = jwt.sign({ id: userId }, jwtSecretKey, {
