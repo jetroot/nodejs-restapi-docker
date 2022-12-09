@@ -2,9 +2,11 @@ import express from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import helmet from "helmet";
+import mongoose from "mongoose";
 
 import userRoutes from "./routes/users.js";
-import mongoose from "mongoose";
+import authRoutes from "./routes/auth.js";
+import { verifyToken } from "./middleware/auth.js";
 
 /* Configurations */
 const app = express();
@@ -17,6 +19,7 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 dotenv.config();
 
 /* Routes */
+app.use("/auth", authRoutes);
 app.use("/", userRoutes);
 
 /* Mongoose Setup */
