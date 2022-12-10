@@ -56,8 +56,40 @@ http://127.0.0.1:3001/register - Post
 ```bash
 http://127.0.0.1:3001/auth/login - Post
 
-{
+Request Body {
     "email": "test@test.com",
     "password": "test",
+}
+-------------------------
+Response Body
+{
+    "token": "eyJhbGciOiJIUzM4NCIsIn...",
+    "user": {
+        "_id": "6393c0358e75172b1c779b36",
+        "firstName": "sofia",
+        "lastName": "tancredy",
+        "email": "sofia@gmail.com",
+        "picture": null,
+        "createdAt": "2022-12-09T23:09:41.030Z"
+    }
+}
+```
+
+3. Update user profile picture
+
+```bash
+http://localhost:3001/upload-profile-picture - Post
+
+Header {
+    "Bearer": "eyJhbGciOiJIUzM4NCIsIn...",
+}
+
+Request Body {
+    "picture": choose file from your pc
+}
+-------------------------
+Response Body
+{
+    "msg": "Profile picture updated succesfully!"
 }
 ```
