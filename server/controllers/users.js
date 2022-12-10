@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import User from "../models/User.js";
 import { generateToken, verifyToken } from "../middleware/auth.js";
+import { getTokenData } from "../utils/utils.js";
 
 /* Routes: / */
 export const welcome = (req, res) => {
@@ -60,6 +61,27 @@ export const login = async (req, res) => {
                 createdAt: user.createdAt,
             },
         });
+    } catch (err) {
+        res.status(500).json({ msg: `Error: ${err}` });
+    }
+};
+
+// update user profile picture in db
+export const updatedUserProfile = async (id, imageName) => {
+    const user = await User.findById(id);
+
+    if (user && imageName) {
+        user.picturePath = imageName;
+        await user.save();
+    } else {
+        throw new Error("User profile picture did not updated");
+    }
+};
+
+// Routes: /upload-profile-picture
+export const userProfileUploaded = async (req, res) => {
+    try {
+        res.status(200).json({ msg: "Profile picture updated succesfully!" });
     } catch (err) {
         res.status(500).json({ msg: `Error: ${err}` });
     }
