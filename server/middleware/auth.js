@@ -25,6 +25,7 @@ export const generateToken = (userId, jwtSecretKey) => {
     try {
         let token = jwt.sign({ id: userId }, jwtSecretKey, {
             expiresIn: "1 day",
+            algorithm: "HS384",
         });
 
         return token;
